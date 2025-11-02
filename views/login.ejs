@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Vulnerable</title>
+    <style> body { font-family: sans-serif; max-width: 500px; margin: auto; padding: 20px; } </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <input name="user" placeholder="Usuario"><br>
+        <input type="password" name="pass" placeholder="Contraseña"><br>
+        <button type="submit">Entrar</button>
+    </form>
+    <% if (error) { %>
+        <p style="color:red;"><%= error %></p>
+    <% } %>
+    <hr>
+    <p><b>Ataque de Inyección SQL:</b></p>
+    <p>Intenta iniciar sesión con el usuario: <code>' OR '1'='1</code></p>
+    <a href="/muro">Ir al Muro</a>
+</body>
+</html>
