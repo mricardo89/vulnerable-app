@@ -64,7 +64,9 @@ app.post('/login', async (req, res) => {
     // ¡¡¡VULNERABILIDAD DE INYECCIÓN SQL!!!
     // Construimos la consulta concatenando strings.
     // Usamos comillas dobles para los nombres de columnas ("user", "pass")
-    const sql = `SELECT * FROM usuarios WHERE "user" = '${user}' AND "pass" = '${pass}'`;
+    const sql = "SELECT * FROM usuarios WHERE user = '" + user + 
+                "' AND pass = '" + pass + "'";
+    // const sql = `SELECT * FROM usuarios WHERE "user" = '${user}' AND "pass" = '${pass}'`;
     
     console.log("Ejecutando SQL inseguro:", sql);
 
